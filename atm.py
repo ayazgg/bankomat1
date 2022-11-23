@@ -6,6 +6,7 @@ from checkBalance import CheckBalance
 from deposit import Deposit
 from payForPhone import PayForPhone
 from withdraw import Withdraw
+from payBills import PayForBills
 
 def print_menu():
     print("Please choose from one of the following options...")
@@ -14,7 +15,8 @@ def print_menu():
     print("2. Withdraw")
     print("3. Show Balance")
     print("4. Pay for mobile phone")
-    print("5. Exit")
+    print("5. Pay for bills")
+    print("6. Exit")
 
 if __name__ == "__main__":
     current_user = cardHolder("", "", "", "", "")
