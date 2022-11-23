@@ -6,18 +6,30 @@ from checkBalance import CheckBalance
 from deposit import Deposit
 from payForPhone import PayForPhone
 from withdraw import Withdraw
+from currencyChange import currency
 
 def print_menu():
     print("Please choose from one of the following options...")
-    print("Your current currecny is: ")
+    print("Your current currecny is: ", current_currency.get_currency())
     print("1. Deposit")
     print("2. Withdraw")
     print("3. Show Balance")
     print("4. Pay for mobile phone")
     print("5. Exit")
 
+def print_currency_menu():
+    print("Please choose from one of the following options...")
+    print("1. USD")
+    print("2. BYN")
+
 if __name__ == "__main__":
     current_user = cardHolder("", "", "", "", "")
+    current_currency = currency("USD", 1)
+
+    # List of currency
+    list_of_currency = []
+    list_of_currency.append(currency("USD", 1))
+    list_of_currency.append(currency("BYN", 2.55))
 
     ### Create a repo of cardholders
     list_of_cardHolders = []
@@ -56,28 +68,52 @@ if __name__ == "__main__":
             exit()
 
 
-## Print options
+## 
 print("Welcome ", current_user.get_firstName(), " :)")
 option = 0
-while option != 6:
-    print_menu()
-    try:
-        option = int(input())
-    except:
-        print("Invalid input. Please try again.")
-    if (option == 1):
-        Deposit(current_user).deposit()
-    elif (option == 2):
-        Withdraw(current_user).withdraw()
-    elif (option == 3):
-        CheckBalance(current_user).check_balance()
-    elif (option == 4):
-        PayForPhone(current_user).pay_for_phone()
-    elif (option == 5):
-        PayForBills(current_user).pay_for_bills()
-    elif (option == 6):
-        break
-    else:
-        open = 0
-    
+currency_option = 0
+while (option != 3):
+    print_currency_menu()
+    currency_option = int(input("Please choose your currency: "))
+    if (currency_option == 1):
+        current_currency = list_of_currency[0]
+        while option != 5:
+            print_menu()
+            try:
+                option = int(input())
+            except:
+                print("Invalid input. Please try again.")
+            if (option == 1):
+                Deposit(current_user, current_currency.get_currency()).deposit()
+            elif (option == 2):
+                Withdraw(current_user, current_currency.get_currency()).withdraw()
+            elif (option == 3):
+                CheckBalance(current_user, current_currency.get_currency()).check_balance()
+            elif (option == 4):
+                PayForPhone(current_user).pay_for_phone()
+            elif (option == 5):
+                break
+            else:
+                open = 0
+    elif (currency_option == 2):
+        current_currency = list_of_currency[1]
+        while option != 5:
+            print_menu()
+            try:
+                option = int(input())
+            except:
+                print("Invalid input. Please try again.")
+            if (option == 1):
+                Deposit(current_user, current_currency.get_currency()).deposit()
+            elif (option == 2):
+                Withdraw(current_user, current_currency.get_currency()).withdraw()
+            elif (option == 3):
+                CheckBalance(current_user, current_currency.get_currency()).check_balance()
+            elif (option == 4):
+                PayForPhone(current_user).pay_for_phone()
+            elif (option == 5):
+                break
+            else:
+                open = 0
+
 print("Thank you. Have a nice day")

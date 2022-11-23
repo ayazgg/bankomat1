@@ -1,7 +1,8 @@
 ## Withdraw function
 class Withdraw:
-    def __init__(self, cardHolder):
+    def __init__(self, cardHolder, currency):
         self.cardHolder = cardHolder
+        self.currency = currency
 
     def withdraw(self):
         try:
@@ -10,6 +11,6 @@ class Withdraw:
                 print("Not enough money")
             else:
                 self.cardHolder.set_balance(self.cardHolder.get_balance() - withdraw)
-                print("Operation finished successfully! You withdrew ", withdraw)
+                print("Operation finished successfully! You withdrew ", withdraw, self.currency)
         except:
             print("Invalid input")
