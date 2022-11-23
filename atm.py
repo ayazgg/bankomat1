@@ -3,15 +3,13 @@ from tkinter import W
 from unittest import expectedFailure
 from cardHolder import cardHolder
 from checkBalance import CheckBalance
-from currencyChange import currency
 from deposit import Deposit
 from payForPhone import PayForPhone
 from withdraw import Withdraw
-from payBills import PayForBills
 
 def print_menu():
     print("Please choose from one of the following options...")
-    print("Your current currecny is: ", current_currency.get_currency())
+    print("Your current currecny is: ")
     print("1. Deposit")
     print("2. Withdraw")
     print("3. Show Balance")
